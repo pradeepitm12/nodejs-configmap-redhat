@@ -20,15 +20,10 @@ osio {
 
       echo "-------------- build default ----------------------------"
       build resources: resources
-      echo "-------------- build separate ----------------------------"
-      build resources: [
-        [ BuildConfig: resources.BuildConfig],
-        [ImageStream: resources.ImageStream],
-      ]
 
 
       echo "-------------- deploy -----------------------------------"
-      deploy resources: resources + cm, env: 'stage'
+      deploy resources: [resources,  cm], env: 'stage'
 
       // deploy app: app, env: 'run', approval: 'manual'
       echo "---------------------------------------------------------"
