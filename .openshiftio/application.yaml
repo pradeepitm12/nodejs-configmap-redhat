@@ -160,3 +160,4 @@ objects:
       to:
         kind: Service
         name: nodejs-configmap${SUFFIX_NAME}
+
