@@ -12,6 +12,8 @@ osio {
     cd {
       def cm = loadResources(file: ".openshiftio/resource.configmap.yaml")
 
+      echo "$cm"
+
       def resources = processTemplate(params: [
         release_version: "1.0.${env.BUILD_NUMBER}"
       ])
