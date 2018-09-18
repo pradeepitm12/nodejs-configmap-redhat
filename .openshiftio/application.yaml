@@ -120,10 +120,10 @@ objects:
             - configMap:
                 items:
                 - key: app-config.yml
-                    path: app-config.yml
-                    name: app-config
+                  path: app-config.yml
+                name: app-config
                 optional: true
-                name: config
+              name: config
         metadata:
           labels:
             app: nodejs-configmap
@@ -160,4 +160,5 @@ objects:
       to:
         kind: Service
         name: nodejs-configmap${SUFFIX_NAME}
+
 
