@@ -10,7 +10,7 @@ osio {
     }
 
     cd {
-      def cm = loadResources(fie: "app-config.yaml")
+      def cm = loadResources(file: "app-config.yaml")
 
       def resources = processTemplate(params: [
         release_version: "1.0.${env.BUILD_NUMBER}"
