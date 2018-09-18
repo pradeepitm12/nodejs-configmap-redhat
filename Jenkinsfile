@@ -1,15 +1,35 @@
-node("launchpad-nodejs") {
-  checkout scm
-  stage("Prepare") {
-    sh "oc policy add-role-to-user view -z default"
-  }
-  stage("Install ConfigMap") {
-    sh "if ! oc get configmap app-config -o yaml | grep app-config.yml; then oc create configmap app-config --from-file=app-config.yml; fi"
-  }
-  stage("Build") {
-    sh "npm install"
-  }
-  stage("Deploy") {
-    sh "npm run openshift"
-  }
+#!/usr/bin/groovy
+@Library('github.com/hrishin/osio-pipeline@config-map')_
+
+osio {
+    config runtime: 'node'
+
+    ci {
+        def app = processTemplate()
+        build app: app
+    }
+
+    cd {
+      def cm = loadResources(fie: "app-config.yaml")
+
+      def resources = processTemplate(params: [
+        release_version: "1.0.${env.BUILD_NUMBER}"
+      ])
+
+      echo "-------------- build default ----------------------------"
+      build resources: resources
+      echo "-------------- build separate ----------------------------"
+      build resources: [
+        [ BuildConfig: resources.BuildConfig],
+        [ImageStream: resources.ImageStream],
+      ]
+
+
+      echo "-------------- deploy -----------------------------------"
+      deploy resources: resources + cm, env: 'stage'
+
+      // deploy app: app, env: 'run', approval: 'manual'
+      echo "---------------------------------------------------------"
+    }
 }
+
