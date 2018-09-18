@@ -116,6 +116,14 @@ objects:
                 - containerPort: 8080
                   name: http
                   protocol: TCP
+          volumes:
+            - configMap:
+                items:
+                - key: app-config.yml
+                    path: app-config.yml
+                    name: app-config
+                optional: true
+                name: config
         metadata:
           labels:
             app: nodejs-configmap
