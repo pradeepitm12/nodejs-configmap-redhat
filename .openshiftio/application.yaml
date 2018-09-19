@@ -116,6 +116,9 @@ objects:
                 - containerPort: 8080
                   name: http
                   protocol: TCP
+              volumeMounts:
+              - mountPath: /deployments/config
+                name: config
           volumes:
             - configMap:
                 items:
@@ -160,5 +163,4 @@ objects:
       to:
         kind: Service
         name: nodejs-configmap${SUFFIX_NAME}
-
 
