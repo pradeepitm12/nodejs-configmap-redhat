@@ -17,7 +17,7 @@ osio {
         release_version: "1.0.${env.BUILD_NUMBER}"
       ])
 
-      /*echo "-------------- build default ----------------------------"
+      echo "-------------- build default ----------------------------"
       build resources: resources
 
 
@@ -25,7 +25,7 @@ osio {
       deploy resources: [resources,  cm], env: 'stage'
 
       // deploy app: app, env: 'run', approval: 'manual'
-      echo "---------------------------------------------------------"*/
+      echo "---------------------------------------------------------"
     }
 }
 
