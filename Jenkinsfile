@@ -10,15 +10,14 @@ osio {
     }
 
     cd {
-/*
+
       def resources = processTemplate(params: [
         release_version: "1.0.${env.BUILD_NUMBER}"
       ])
 
-      echo "-------------- build default ----------------------------"
-      build resources: resources
-*/
-
+ //     echo "-------------- build default ----------------------------"
+//      build resources: resources
+      echo "$resources"
       def cm = loadResources(file: ".openshiftio/resource.configmap.yaml")
       echo "$cm"
       def role = loadResources(file: ".openshiftio/resource.roles.yaml")
