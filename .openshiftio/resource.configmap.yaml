@@ -6,3 +6,13 @@ data:
 kind: ConfigMap
 metadata:
   name: app-config
+---
+apiVersion: v1
+data:
+  app-config2.yml: |
+    message : "Hello, %s from a ConfigMap2 !"
+    level : INFO
+kind: ConfigMap
+metadata:
+  name: app-config2
+
