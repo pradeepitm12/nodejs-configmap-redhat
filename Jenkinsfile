@@ -10,8 +10,8 @@ osio {
     }
 
     cd {
-
-      def resources = processTemplate(params: [
+        echo "${readYaml(file: "./openshiftio/resource.configmap.yaml")}"
+      /*def resources = processTemplate(params: [
         release_version: "1.0.${env.BUILD_NUMBER}"
       ])
 
@@ -27,7 +27,7 @@ osio {
       deploy resources: [resources,  cm, role], env: 'stage'
 
       // deploy app: app, env: 'run', approval: 'manual'
-      echo "---------------------------------------------------------"
+      echo "---------------------------------------------------------"*/
     }
 }
 
