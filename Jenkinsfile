@@ -10,7 +10,7 @@ osio {
     }
 
     cd {
-        echo "${readYaml(file: ".openshiftio/resource.configmap.yaml")}"
+        echo "${readYaml(file: ".openshiftio/resource.configmap.yaml").flattern()}"
       /*def resources = processTemplate(params: [
         release_version: "1.0.${env.BUILD_NUMBER}"
       ])
