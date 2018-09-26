@@ -10,7 +10,12 @@ osio {
     }
 
     cd {
-        echo "${readYaml(file: ".openshiftio/resource.roles.yaml") instanceof Map}"
+      
+        def cm = loadResources(file: ".openshiftio/resource.configmap.yaml")
+        echo "$cm"
+        def role = loadResources(file: ".openshiftio/resource.roles.yaml")
+        echo "$role"
+ 
       /*def resources = processTemplate(params: [
         release_version: "1.0.${env.BUILD_NUMBER}"
       ])
