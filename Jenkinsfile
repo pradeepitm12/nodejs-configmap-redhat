@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-@Library('github.com/hrishin/osio-pipeline@config-map')_
+@Library('github.com/hrishin/osio-pipeline@load-resources')_
 
 osio {
     config runtime: 'node'
