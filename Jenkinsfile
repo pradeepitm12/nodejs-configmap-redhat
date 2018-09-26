@@ -17,6 +17,8 @@ osio {
 
       def cm = loadResources(file: ".openshiftio/resource.configmap.yaml")
       echo "$cm"
+
+      echo "$resources"
  
       echo "-------------- build default ----------------------------"
       build resources: resources
