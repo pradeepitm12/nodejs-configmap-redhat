@@ -5,5 +5,5 @@ data:
     level : INFO
 kind: ConfigMap
 metadata:
-  name: app-config1
+  name: app-config
 
