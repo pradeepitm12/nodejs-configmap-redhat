@@ -27,4 +27,5 @@ osio {
       echo "-------------- deploy stage-----------------------------------"
       deploy resources: [resources,  cm], env: 'stage'
     }
+
 }
