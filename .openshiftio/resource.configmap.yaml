@@ -3,7 +3,7 @@ data:
   app-config.yml: |
     message : "Hello, %s from a ConfigMap !"
     level : INFO
-#kind: ConfigMap
+kind: ConfigMap
 metadata:
   name: app-config
 
