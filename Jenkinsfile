@@ -1,4 +1,3 @@
-
 #!/usr/bin/groovy
 @Library('github.com/pradeepitm12/osio-pipeline@staging')_
 
