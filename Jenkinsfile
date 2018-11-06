@@ -16,7 +16,7 @@ osio {
         release_version: "1.0.${env.BUILD_NUMBER}"
       ])
 
-      def cm = loadResources(file: ".openshiftio/resource.configmap.yaml",validate: "True")
+      def cm = loadResources(file: ".openshiftio/resource.configmap.yaml",validate: "False")
       echo "$cm"
 
       echo "$resources"
