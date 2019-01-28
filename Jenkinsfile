@@ -1,31 +1,30 @@
-#!/usr/bin/groovy
-@Library('github.com/pradeepitm12/osio-pipeline@staging')_
+@Library('github.com/fabric8io/osio-pipeline@master') _
 
 osio {
-    
-    config runtime: 'node'
 
-    ci {
-        def app = processTemplate()
-        build app: app
-    }
+  config runtime: 'node'
 
-    cd {
-     
-      def resources = processTemplate(params: [
-        release_version: "1.0.${env.BUILD_NUMBER}"
-      ])
+  ci {
 
-      def cm = loadResources(file: ".openshiftio/resource.configmap.yaml")
-      echo "$cm"
+    def resources = processTemplate(params: [
+          release_version: "1.0.${env.BUILD_NUMBER}"
+    ])
 
-      echo "$resources"
- 
-      echo "-------------- build default ----------------------------"
-      build resources: resources
-      
-      echo "-------------- Pradeep test msg 2 --------------"
-      echo "-------------- deploy stage-----------------------------------"
-      deploy resources: [resources,  cm], env: 'stage'
-    }
+    build resources: resources
+
+  }
+
+  cd {
+
+    def resources = processTemplate(params: [
+          release_version: "1.0.${env.BUILD_NUMBER}"
+    ])
+
+    build resources: resources
+
+    deploy resources: resources, env: 'stage'
+
+    deploy resources: resources, env: 'run', approval: 'manual'
+
+  }
 }
